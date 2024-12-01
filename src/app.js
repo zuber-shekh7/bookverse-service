@@ -1,9 +1,11 @@
 import express from "express";
 import "dotenv/config";
 
-import { userRoutes } from "./routes/index.js";
+import { bookRoutes, userRoutes } from "./routes/index.js";
 
 const app = express();
+
+app.use(express.json());
 
 app.get("/ping", (req, res) => {
   return res.json({
@@ -12,6 +14,7 @@ app.get("/ping", (req, res) => {
 });
 
 app.use("/users", userRoutes);
+app.use("/books", bookRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
