@@ -1,9 +1,13 @@
 import express from "express";
+import morgan from "morgan";
 import "dotenv/config";
 
 import { authorRoutes, bookRoutes, userRoutes } from "./routes/index.js";
 
 const app = express();
+
+// logger
+app.use(morgan("tiny"));
 
 app.use(express.json());
 
