@@ -2,7 +2,12 @@ import express from "express";
 import morgan from "morgan";
 import "dotenv/config";
 
-import { authorRoutes, bookRoutes, userRoutes } from "./routes/index.js";
+import {
+  authorRoutes,
+  bookRoutes,
+  genreRoutes,
+  userRoutes,
+} from "./routes/index.js";
 
 const app = express();
 
@@ -19,6 +24,7 @@ app.get("/ping", (req, res) => {
 
 app.use("/authors", authorRoutes);
 app.use("/books", bookRoutes);
+app.use("/genres", genreRoutes);
 app.use("/users", userRoutes);
 
 // Error handling middleware
