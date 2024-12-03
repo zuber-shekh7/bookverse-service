@@ -6,6 +6,7 @@ import {
   authorRoutes,
   bookRoutes,
   genreRoutes,
+  publisherRoutes,
   userRoutes,
 } from "./routes/index.js";
 
@@ -25,6 +26,7 @@ app.get("/ping", (req, res) => {
 app.use("/authors", authorRoutes);
 app.use("/books", bookRoutes);
 app.use("/genres", genreRoutes);
+app.use("/publishers", publisherRoutes);
 app.use("/users", userRoutes);
 
 // Error handling middleware
