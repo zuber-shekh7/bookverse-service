@@ -38,3 +38,36 @@ export const createNewGenre = async (req, res) => {
     throw Error(error);
   }
 };
+
+export const updateGenre = async (req, res) => {
+  try {
+    const { errors } = validationResult(req);
+
+    if (errors.length > 0) {
+      return res.status(400).json({
+        message: errors[0].msg,
+      });
+    }
+
+    const { id, title, description } = req.body;
+
+    const genre = await GenreModel.findById(id);
+
+    if (!genre) {
+      return res.status(400).json({
+        message: "invalid id",
+      });
+    }
+
+    genre.title = title;
+    genre.description = description;
+
+    await genre.save();
+
+    return res.status(200).json({
+      message: "Genre updated successfully",
+    });
+  } catch (error) {
+    throw Error(error);
+  }
+};

@@ -60,7 +60,7 @@ export const updateAuthor = async (req, res) => {
 
     await author.save();
 
-    return res.status(201).json({
+    return res.status(200).json({
       message: "Updated author successfully",
     });
   } catch (error) {
