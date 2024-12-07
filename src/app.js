@@ -3,6 +3,7 @@ import morgan from "morgan";
 import "dotenv/config";
 
 import {
+  adminRoutes,
   authorRoutes,
   bookRoutes,
   genreRoutes,
@@ -23,6 +24,7 @@ app.get("/ping", (req, res) => {
   });
 });
 
+app.use("/admin", adminRoutes);
 app.use("/authors", authorRoutes);
 app.use("/books", bookRoutes);
 app.use("/genres", genreRoutes);
